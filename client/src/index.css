@@ -1,0 +1,15 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #060a07;
+  color: #e8f5e9;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #060a07; }
+::-webkit-scrollbar-thumb { background: #00e676; border-radius: 3px; }
+a { text-decoration: none; }
+button { cursor: pointer; font-family: 'DM Sans', sans-serif; }
