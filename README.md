@@ -1,6 +1,6 @@
 # 🏛️ Funded Master — MERN Stack Trading Platform
 
-A pixel-perfect conversion of the Funded Master Figma design into a full MERN stack web application.
+Funded Master Figma design into a full MERN stack web application.
 
 ---
 
@@ -61,7 +61,6 @@ npm run install-all
 ```bash
 cd server
 cp .env.example .env
-# Edit .env with your MongoDB URI and JWT secret
 ```
 
 ### 3. Run Development
