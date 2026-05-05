@@ -15,13 +15,13 @@ import './App.css'
 
 function App() {
   return (
-  <div style={{ overflowX: 'hidden', width: '100%' }}>
+    <div style={{ overflowX: 'hidden', width: '100%' }}>
       <Navbar />
       <Hero />
       <Ticker />
       <TradingAssets />
       <HowItWorks />
-      <PricingSection />
+      <Pricing />
       <WhyUs />
       <EarningsCalculator />
       <TopTraders />

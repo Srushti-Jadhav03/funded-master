@@ -1,216 +1,210 @@
-import React, { useState } from 'react';
+import { useState } from 'react'
+import './Pricing.css'
 
-const tabs = ['Instant', '1-Step', '2-Step', 'Sparatn'];
-const sizes = ['$25K', '$50K', '$100K'];
+function PricingSection() {
+  const [activeTab, setActiveTab] = useState('Instant')
+  const [activeSize, setActiveSize] = useState('$50K')
 
-const planPrices = {
-  'Instant': { '$25K': 197, '$50K': 297, '$100K': 497 },
-  '1-Step':  { '$25K': 149, '$50K': 249, '$100K': 399 },
-  '2-Step':  { '$25K': 119, '$50K': 199, '$100K': 349 },
-  'Sparatn': { '$25K': 89,  '$50K': 159, '$100K': 279 },
-};
+  const prices = {
+    'Instant': { '$25K': '$449', '$50K': '$749', '$100K': '$1,299' },
+    '1-Step':  { '$25K': '$299', '$50K': '$549', '$100K': '$897'  },
+    '2-Step':  { '$25K': '$199', '$50K': '$349', '$100K': '$649'  },
+    'Sparatn': { '$25K': '$399', '$50K': '$699', '$100K': '$1,199'},
+  }
 
-const verificationRules = {
-  'Instant': { daily: '2%', overall: '10%', minDays: '3 Days', leverage: '30:1' },
-  '1-Step':  { daily: '3%', overall: '10%', minDays: '1 Day',  leverage: '20:1' },
-  '2-Step':  { daily: '4%', overall: '8%',  minDays: '5 Days', leverage: '10:1' },
-  'Sparatn': { daily: '5%', overall: '12%', minDays: '0 Days', leverage: '50:1' },
-};
-
-const liveRules = {
-  'Instant': { payout: '90%', daily: '4%', overall: '6%', freq: '14 days', period: 'Unlimited' },
-  '1-Step':  { payout: '85%', daily: '5%', overall: '8%', freq: '7 days',  period: 'Unlimited' },
-  '2-Step':  { payout: '80%', daily: '4%', overall: '6%', freq: '14 days', period: 'Unlimited' },
-  'Sparatn': { payout: '95%', daily: '5%', overall: '10%',freq: '7 days',  period: 'Unlimited' },
-};
-
-export default function Pricing() {
-  const [activeTab, setActiveTab] = useState('Instant');
-  const [activeSize, setActiveSize] = useState('$50K');
-
-  const price = planPrices[activeTab][activeSize];
-  const vr = verificationRules[activeTab];
-  const lr = liveRules[activeTab];
+  const sizeOptions = ['$25K', '$50K', '$100K']
+  const tabOptions = ['Instant', '1-Step', '2-Step', 'Sparatn']
 
   return (
-    <section id="pricing" style={{ padding: '80px 60px', background: '#060a07' }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-        <h2 style={{
-          fontFamily: 'Syne, sans-serif', fontSize: 'clamp(2rem, 4vw, 2.8rem)',
-          fontWeight: 800, color: '#fff', marginBottom: '8px',
-        }}>
-          Become an <span style={{ color: '#00e676' }}>Master Trader</span>
+    <section id="pricing" className="pricing-section">
+      <div className="pricing-container">
+        <h2 className="section-heading">
+          Become an <span className="highlight">Master Trader</span>
         </h2>
-        <p style={{ color: '#5a8a60', fontSize: '0.9rem', marginBottom: '36px' }}>
+        <p className="section-subtitle">
           Choose the evaluation based on your preference to become an Empire Trader.
         </p>
 
-        {/* Top row: tabs + popular card */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '30px', alignItems: 'start', marginBottom: '30px' }}>
-          <div>
-            <p style={{ fontSize: '0.8rem', color: '#7aad80', marginBottom: '12px', fontWeight: 600 }}>Choose your Trading Path</p>
-            {/* Path tabs */}
-            <div style={{ display: 'flex', gap: '10px', marginBottom: '28px', flexWrap: 'wrap' }}>
-              {tabs.map(tab => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  style={{
-                    padding: '9px 22px', borderRadius: '8px',
-                    fontFamily: 'Syne, sans-serif', fontSize: '0.88rem', fontWeight: 600,
-                    cursor: 'pointer', transition: 'all 0.2s', border: 'none',
-                    background: activeTab === tab ? '#00e676' : 'rgba(0,230,118,0.08)',
-                    color: activeTab === tab ? '#000' : '#7aad80',
-                    boxShadow: activeTab === tab ? '0 0 20px rgba(0,230,118,0.3)' : 'none',
-                  }}
-                >
-                  {tab}
-                </button>
-              ))}
+        {/* Top Row */}
+        <div className="top-row">
+          {/* Left Side - transparent layout */}
+          <div className="left-side">
+            {/* Trading Path - NO box styling, transparent */}
+            <div className="trading-path-row">
+              <div className="path-label">Choose your Trading Path</div>
+              <div className="tabs-container">
+                {tabOptions.map((tab) => (
+                  <button
+                    key={tab}
+                    className={`tab-btn ${activeTab === tab ? 'active' : ''}`}
+                    onClick={() => setActiveTab(tab)}
+                  >
+                    {tab}
+                  </button>
+                ))}
+              </div>
             </div>
 
-            <p style={{ fontSize: '0.8rem', color: '#7aad80', marginBottom: '12px', fontWeight: 600 }}>Select Account Size</p>
-            <div style={{
-              display: 'flex', gap: '10px',
-              border: '1px solid rgba(0,230,118,0.15)',
-              borderRadius: '10px', padding: '6px',
-              width: 'fit-content',
-            }}>
-              {sizes.map(sz => (
-                <button
-                  key={sz}
-                  onClick={() => setActiveSize(sz)}
-                  style={{
-                    padding: '10px 28px', borderRadius: '7px',
-                    fontFamily: 'Syne, sans-serif', fontSize: '0.9rem', fontWeight: 700,
-                    cursor: 'pointer', transition: 'all 0.2s', border: 'none',
-                    background: activeSize === sz ? '#00e676' : 'transparent',
-                    color: activeSize === sz ? '#000' : '#7aad80',
-                  }}
-                >
-                  {sz}
-                </button>
-              ))}
+            {/* Account Size - NO box styling, transparent */}
+            <div className="account-size-row">
+              <div className="size-label">Select Account Size</div>
+              <div className="size-buttons">
+                {sizeOptions.map((size) => (
+                  <button
+                    key={size}
+                    className={`size-btn ${activeSize === size ? 'active' : ''}`}
+                    onClick={() => setActiveSize(size)}
+                  >
+                    {size}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Popular price card */}
-          <div style={{
-            background: 'linear-gradient(135deg, #0d2018, #081408)',
-            border: '1px solid rgba(0,230,118,0.3)',
-            borderRadius: '16px', padding: '28px 32px',
-            textAlign: 'center', minWidth: '220px',
-            boxShadow: '0 0 40px rgba(0,230,118,0.1)',
-          }}>
-            <div style={{
-              display: 'inline-flex', alignItems: 'center', gap: '6px',
-              background: 'rgba(0,230,118,0.15)', border: '1px solid rgba(0,230,118,0.3)',
-              borderRadius: '20px', padding: '4px 14px',
-              fontSize: '0.72rem', fontWeight: 700, color: '#00e676',
-              marginBottom: '16px', letterSpacing: '0.05em',
-            }}>🔥 MOST POPULAR</div>
-            <p style={{ fontSize: '0.75rem', color: '#7aad80', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              START NOW AT ONLY
-            </p>
-            <div style={{
-              fontFamily: 'Syne, sans-serif', fontSize: '3rem',
-              fontWeight: 800, color: '#fff', lineHeight: 1,
-              marginBottom: '20px',
-            }}>
-              ${price}
+          {/* Right Panel - pricing card */}
+          <div className="right-panel">
+            <div className="popular-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#00C9A7" style={{ marginRight: '6px' }}>
+                <path d="M12 2C9 7 6 8 6 13a6 6 0 0 0 12 0c0-5-3-6-6-11zm0 15a2 2 0 0 1-2-2c0-2 2-3 2-5 0 2 2 3 2 5a2 2 0 0 1-2 2z"/>
+              </svg>
+              MOST POPULAR
             </div>
-            <button style={{
-              width: '100%', padding: '13px',
-              background: '#00e676', color: '#000',
-              border: 'none', borderRadius: '8px',
-              fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: '0.95rem',
-              cursor: 'pointer',
-            }}>Get Funded</button>
+            <div className="start-label">START NOW AT ONLY</div>
+            <div className="price-display">{prices[activeTab][activeSize]}</div>
+            <button className="get-funded-btn">Get Funded</button>
           </div>
         </div>
 
-        {/* Rules Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-          {/* Verification */}
-          <div style={{
-            background: '#080f0a', border: '1px solid rgba(0,230,118,0.1)',
-            borderRadius: '14px', padding: '28px',
-          }}>
-            <p style={{ fontSize: '0.72rem', fontWeight: 700, color: '#5a8a60', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '8px' }}>1. VERIFICATION</p>
-            <p style={{ fontSize: '0.78rem', color: '#3a6040', lineHeight: 1.6, marginBottom: '20px' }}>
-              Choose a simulated account size and try to reach the minimum simulated gains target. Trade all available instruments.
+        {/* Bottom Row - 2 Info Cards with individual stat boxes */}
+        <div className="bottom-cards">
+          <div className="info-card">
+            <h4 className="card-title">1. VERIFICATION</h4>
+            <p className="card-desc">
+              Choose a simulated account size and try to reach the minimum simulated gains target...
             </p>
-            {[
-              { label: 'Max Daily Drawdown', value: vr.daily },
-              { label: 'Max Overall Drawdown', value: vr.overall },
-              { label: 'Minimum Profitable Days', value: vr.minDays },
-              { label: 'Sim Trading Leverage', value: vr.leverage },
-            ].map((r, i) => (
-              <div key={i} style={{
-                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                padding: '12px 0', borderBottom: '1px solid rgba(0,230,118,0.07)',
-              }}>
-                <span style={{ fontSize: '0.8rem', color: '#5a8a60', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ color: '#00e676' }}>↘</span> {r.label}
+            <div className="stats-list">
+              <div className="stat-box">
+                <span className="label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#00C9A7" strokeWidth="2" width="16" height="16">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                    <polyline points="17 6 23 6 23 12"/>
+                  </svg>
+                  Max Daily Drawdown
                 </span>
-                <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#fff', fontFamily: 'Syne, sans-serif' }}>{r.value}</span>
+                <span className="value">2%</span>
               </div>
-            ))}
+              <div className="stat-box">
+                <span className="label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#00C9A7" strokeWidth="2" width="16" height="16">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                    <polyline points="17 6 23 6 23 12"/>
+                  </svg>
+                  Max Overall Drawdown
+                </span>
+                <span className="value">10%</span>
+              </div>
+              <div className="stat-box">
+                <span className="label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#00C9A7" strokeWidth="2" width="16" height="16">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  Minimum Profitable Days
+                </span>
+                <span className="value">3 Days</span>
+              </div>
+              <div className="stat-box">
+                <span className="label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#00C9A7" strokeWidth="2" width="16" height="16">
+                    <line x1="12" y1="2" x2="12" y2="6"/>
+                    <line x1="12" y1="18" x2="12" y2="22"/>
+                    <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/>
+                    <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/>
+                    <line x1="2" y1="12" x2="6" y2="12"/>
+                    <line x1="18" y1="12" x2="22" y2="12"/>
+                    <circle cx="12" cy="12" r="4"/>
+                  </svg>
+                  Sim Trading Leverage
+                </span>
+                <span className="value">30:1</span>
+              </div>
+            </div>
           </div>
 
-          {/* Live Simulated */}
-          <div style={{
-            background: '#080f0a', border: '1px solid rgba(0,230,118,0.1)',
-            borderRadius: '14px', padding: '28px',
-          }}>
-            <p style={{ fontSize: '0.72rem', fontWeight: 700, color: '#5a8a60', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '8px' }}>2. LIVE SIMULATED TRADER</p>
-            <p style={{ fontSize: '0.78rem', color: '#3a6040', lineHeight: 1.6, marginBottom: '20px' }}>
-              You can now start trading on a simulated basis in the EmpireTrading program without simulated gain targets.
+          <div className="info-card">
+            <h4 className="card-title">2. LIVE SIMULATED TRADER</h4>
+            <p className="card-desc">
+              You can now start trading on a simulated basis in the EmpireTrading program...
             </p>
-            {[
-              { label: 'Payout Share', value: lr.payout, highlight: true },
-              { label: 'Max Daily Drawdown', value: lr.daily },
-              { label: 'Max Overall Drawdown', value: lr.overall },
-              { label: 'Payout Frequency', value: lr.freq },
-              { label: 'Trading Period', value: lr.period },
-            ].map((r, i) => (
-              <div key={i} style={{
-                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                padding: '12px 0', borderBottom: '1px solid rgba(0,230,118,0.07)',
-              }}>
-                <span style={{ fontSize: '0.8rem', color: '#5a8a60', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ color: '#00e676' }}>%</span> {r.label}
+            <div className="stats-list">
+              <div className="stat-box">
+                <span className="label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#00C9A7" strokeWidth="2" width="16" height="16">
+                    <line x1="12" y1="1" x2="12" y2="23"/>
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                  </svg>
+                  Payout Share
                 </span>
-                <span style={{
-                  fontSize: '0.85rem', fontWeight: 700,
-                  fontFamily: 'Syne, sans-serif',
-                  color: r.highlight ? '#000' : '#fff',
-                  background: r.highlight ? '#00e676' : 'transparent',
-                  padding: r.highlight ? '2px 10px' : '0',
-                  borderRadius: r.highlight ? '4px' : '0',
-                }}>{r.value}</span>
+                <span className="value">
+                  <span className="payout-badge">90%</span>
+                </span>
               </div>
-            ))}
+              <div className="stat-box">
+                <span className="label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#00C9A7" strokeWidth="2" width="16" height="16">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                    <polyline points="17 6 23 6 23 12"/>
+                  </svg>
+                  Max Daily Drawdown
+                </span>
+                <span className="value">4%</span>
+              </div>
+              <div className="stat-box">
+                <span className="label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#00C9A7" strokeWidth="2" width="16" height="16">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                    <polyline points="17 6 23 6 23 12"/>
+                  </svg>
+                  Max Overall Drawdown
+                </span>
+                <span className="value">6%</span>
+              </div>
+              <div className="stat-box">
+                <span className="label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#00C9A7" strokeWidth="2" width="16" height="16">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  Payout Frequency
+                </span>
+                <span className="value">14 days</span>
+              </div>
+              <div className="stat-box">
+                <span className="label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#00C9A7" strokeWidth="2" width="16" height="16">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                  Trading Period
+                </span>
+                <span className="value">Unlimited</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Bottom CTA Banner */}
-        <div style={{
-          marginTop: '24px',
-          background: 'linear-gradient(90deg, rgba(0,230,118,0.08), rgba(0,230,118,0.15), rgba(0,230,118,0.08))',
-          border: '1px solid rgba(0,230,118,0.2)',
-          borderRadius: '12px', padding: '18px 30px',
-          textAlign: 'center',
-          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px',
-        }}>
-          <span style={{ fontSize: '1.1rem' }}>💰</span>
-          <span style={{
-            fontFamily: 'Syne, sans-serif', fontWeight: 700,
-            fontSize: '1rem', color: '#fff',
-          }}>Get Paid in 48 Hours or Get $2000!</span>
-          <span style={{ fontSize: '1.1rem' }}>💰</span>
+        {/* Bottom Banner */}
+        <div className="bottom-banner">
+          Get Paid in 48 Hours or Get $2000!
         </div>
       </div>
     </section>
-  );
+  )
 }
+
+export default PricingSection

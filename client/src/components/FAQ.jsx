@@ -1,64 +1,73 @@
-import React, { useState } from 'react';
+import { useState } from 'react'
+import './FAQ.css'
 
-const faqs = [
-  { q: 'What is Empire Trading?', a: 'To win the game, you need strong support and diligent preparation. Join For Traders Community.' },
-  { q: 'Who can apply?', a: 'Any trader above 18 years old from any country can apply. You only need a valid ID and basic trading experience.' },
-  { q: 'How does funding work?', a: 'Complete the challenge phase, receive your funded account, and start trading to earn profit splits directly to your account.' },
-  { q: 'Which markets can I trade?', a: 'Trade Forex, Indices, Commodities, Cryptocurrency, and more — over 150 instruments available.' },
-  { q: 'How do you help manage risk?', a: 'We set clear drawdown rules and provide a dashboard to monitor your risk in real-time.' },
-  { q: 'Do you offer resources for new traders?', a: 'Yes! We offer webinars, tutorials, and a trader community to help you succeed.' },
-  { q: 'How fast are payouts?', a: 'Payouts are processed within 5 hours on average. The fastest payout recorded was 1 hour.' },
-  { q: 'What trading platforms do you support?', a: 'We support MetaTrader 4 (MT4), MetaTrader 5 (MT5), and cTrader on desktop, web, and mobile.' },
-];
+const FAQ = () => {
+  const [openIndex, setOpenIndex] = useState(0)
 
-export default function FAQ() {
-  const [open, setOpen] = useState(0);
+  const faqs = [
+    {
+      question: 'What is Empire Trading?',
+      answer: 'To win the game, you need strong support and diligent preparation. Join For Traders Community.'
+    },
+    {
+      question: 'Who can apply?',
+      answer: 'Anyone can apply to become a funded trader. We welcome traders of all experience levels who are ready to prove their skills.'
+    },
+    {
+      question: 'How does funding work?',
+      answer: 'Pass our evaluation challenge and receive a funded account. Trade our capital and keep up to 95% of your profits.'
+    },
+    {
+      question: 'Which markets can I trade?',
+      answer: 'You can trade Forex, Indices, Commodities, Cryptocurrencies and more across 150+ instruments.'
+    },
+    {
+      question: 'How do you help manage risk?',
+      answer: 'We have clear drawdown limits and risk management rules to protect both traders and our capital.'
+    },
+    {
+      question: 'Do you offer resources for new traders?',
+      answer: 'Yes! We provide educational resources, trading tools and a supportive community to help you succeed.'
+    },
+    {
+      question: 'How fast are payouts?',
+      answer: 'Payouts are processed within 24-48 hours. We pride ourselves on being one of the fastest paying prop firms.'
+    },
+    {
+      question: 'What trading platforms do you support?',
+      answer: 'We support MetaTrader 4, MetaTrader 5 and other leading trading platforms.'
+    },
+  ]
+
   return (
-    <section id="faq" style={{ padding: '80px 60px', background: '#07100a' }}>
-      <div style={{ maxWidth: '780px', margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-          <h2 style={{ fontFamily: 'Syne, sans-serif', fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, color: '#fff', marginBottom: '12px' }}>
-            Frequently Asked <span style={{ color: '#00e676' }}>Questions</span>
-          </h2>
-          <p style={{ color: '#4a7a50', fontSize: '0.9rem' }}>I know... just like you many traders have these questions,<br />so here are the answers!</p>
-        </div>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          {faqs.map((faq, i) => (
-            <div
-              key={i}
-              onClick={() => setOpen(open === i ? -1 : i)}
-              style={{
-                background: open === i ? 'linear-gradient(135deg, #0d2018, #081408)' : '#0a1810',
-                border: `1px solid ${open === i ? 'rgba(0,230,118,0.35)' : 'rgba(0,230,118,0.1)'}`,
-                borderRadius: '10px', overflow: 'hidden', cursor: 'pointer',
-                transition: 'all 0.2s',
-              }}
-            >
-              <div style={{
-                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                padding: '18px 24px',
-              }}>
-                <span style={{
-                  fontFamily: 'Syne, sans-serif', fontSize: '0.92rem', fontWeight: 600,
-                  color: open === i ? '#00e676' : '#c8e6cb',
-                }}>{faq.q}</span>
-                <span style={{
-                  color: '#00e676', fontSize: '1.3rem', fontWeight: 300,
-                  transition: 'transform 0.3s',
-                  transform: open === i ? 'rotate(45deg)' : 'none',
-                  flexShrink: 0, marginLeft: '12px',
-                }}>+</span>
-              </div>
-              {open === i && (
-                <div style={{ padding: '0 24px 18px', fontSize: '0.85rem', color: '#5a8a60', lineHeight: 1.7 }}>
-                  {faq.a}
-                </div>
-              )}
+    <section id="faqs" className="faq-section">
+      <h2 className="faq-heading">
+        Frequently Asked <span>Questions</span>
+      </h2>
+      <p className="faq-subtitle">
+        I know... just like you many traders have these questions, so here are the answers!
+      </p>
+      <div className="faq-list">
+        {faqs.map((faq, i) => (
+          <div
+            key={i}
+            className={`faq-item ${openIndex === i ? 'faq-open' : ''}`}
+            onClick={() => setOpenIndex(openIndex === i ? null : i)}
+          >
+            <div className="faq-header">
+              <span className="faq-question">{faq.question}</span>
+              <span className="faq-icon">{openIndex === i ? '×' : '+'}</span>
             </div>
-          ))}
-        </div>
+            {openIndex === i && (
+              <div className="faq-answer">
+                {faq.answer}
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </section>
-  );
+  )
 }
+
+export default FAQ

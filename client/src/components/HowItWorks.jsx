@@ -1,99 +1,83 @@
-import React from 'react';
+import cubeGlow from '../assets/cubeglow.png'
+import './HowItWorks.css'
 
-const steps = [
-  { num: '01', title: 'Challenge Phase', desc: 'Choose a Challenge account and showcase your skills.' },
-  { num: '02', title: 'Get Funded Account', desc: 'Pass your challenge and get a simulated funded account.' },
-  { num: '03', title: 'Get Rewarded', desc: 'Earn your share of the profits and receive your payout within 24 hrs.' },
-];
-
-export default function HowItWorks() {
+function HowItWorks() {
   return (
-    <section id="rules" style={{ background: '#07100a', padding: '80px 60px' }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-        {/* HOW IT WORKS label */}
-        <p style={{
-          color: '#00e676', fontSize: '0.75rem', fontWeight: 700,
-          letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '16px',
-        }}>HOW IT WORKS</p>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '60px', alignItems: 'start', marginBottom: '60px' }}>
-          <div>
-            <h2 style={{
-              fontFamily: 'Syne, sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)',
-              fontWeight: 800, color: '#fff', lineHeight: 1.1, marginBottom: '20px',
-            }}>
-              Maximum Profit &amp;<br />
-              Secure <span style={{ color: '#00e676' }}>Trading Platform</span>
-            </h2>
-            <p style={{ color: '#5a8a60', fontSize: '0.9rem', maxWidth: '380px', marginBottom: '28px' }}>
-              Choose the evaluation based on your preference to become an Empire Trader.
-            </p>
-            <a href="#pricing" style={{
-              display: 'inline-block',
-              background: '#00e676', color: '#000',
-              padding: '12px 28px', borderRadius: '8px',
-              fontWeight: 700, fontSize: '0.9rem',
-              fontFamily: 'Syne, sans-serif',
-            }}>Get Funded</a>
-          </div>
-
-          {/* 3D cross/plus visual */}
-          <div style={{ position: 'relative', width: '220px', height: '220px', flexShrink: 0 }}>
-            <svg viewBox="0 0 200 200" style={{ width: '100%', filter: 'drop-shadow(0 0 30px rgba(0,230,118,0.4))' }}>
-              <defs>
-                <linearGradient id="plusGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#3a8a5a" />
-                  <stop offset="100%" stopColor="#1a4a2a" />
-                </linearGradient>
-                <linearGradient id="plusGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#2a6a4a" />
-                  <stop offset="100%" stopColor="#0d2a1a" />
-                </linearGradient>
-                <linearGradient id="plusGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#00e676" stopOpacity="0.6" />
-                  <stop offset="100%" stopColor="#00c853" stopOpacity="0.3" />
-                </linearGradient>
-              </defs>
-              {/* Top arm */}
-              <rect x="75" y="10" width="50" height="85" rx="8" fill="url(#plusGrad1)" />
-              {/* Bottom arm */}
-              <rect x="75" y="105" width="50" height="85" rx="8" fill="url(#plusGrad2)" />
-              {/* Left arm */}
-              <rect x="10" y="75" width="85" height="50" rx="8" fill="url(#plusGrad2)" />
-              {/* Right arm */}
-              <rect x="105" y="75" width="85" height="50" rx="8" fill="url(#plusGrad1)" />
-              {/* Center highlight */}
-              <rect x="75" y="75" width="50" height="50" fill="url(#plusGrad3)" />
-              {/* Glow lines */}
-              <rect x="97" y="10" width="6" height="180" fill="rgba(0,230,118,0.15)" />
-              <rect x="10" y="97" width="180" height="6" fill="rgba(0,230,118,0.15)" />
-            </svg>
-          </div>
-        </div>
-
-        {/* 3 step cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
-          {steps.map((step, i) => (
-            <div key={i} style={{
-              background: 'linear-gradient(135deg, #0a1810, #060e08)',
-              border: '1px solid rgba(0,230,118,0.12)',
-              borderRadius: '14px', padding: '28px 24px',
-            }}>
-              <div style={{
-                width: '44px', height: '44px',
-                background: 'rgba(0,230,118,0.1)',
-                border: '1px solid rgba(0,230,118,0.2)',
-                borderRadius: '10px',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                marginBottom: '16px',
-              }}>
-                {i === 0 ? '🏆' : i === 1 ? '🏦' : '💰'}
-              </div>
-              <h4 style={{ fontFamily: 'Syne, sans-serif', fontSize: '1rem', fontWeight: 700, color: '#fff', marginBottom: '8px' }}>{step.title}</h4>
-              <p style={{ fontSize: '0.82rem', color: '#5a8a60', lineHeight: 1.6 }}>{step.desc}</p>
+    <section id="trading-rules" className="how-it-works-section">
+      <div className="big-card-wrapper">
+        <div className="big-card how-it-works-card">
+          {/* Top Row */}
+          <div className="top-row">
+            {/* Left Side */}
+             <div className="left-side" style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+              <div className="label">HOW IT WORKS</div>
+              <h2 className="main-heading">
+                Maximum Profit &<br />
+                Secure <span className="highlight">Trading Platform</span>
+              </h2>
+              <p className="description">
+                Choose the evaluation based on your preference to become an Empire Trader.
+              </p>
+               <button className="get-funded-btn hiw-btn">Get Funded</button>
             </div>
-          ))}
+
+            {/* Right Side - Cube Glow Image */}
+            <div className="cube-glow-container">
+              <img src={cubeGlow} alt="cube" className="cube-glow-img" />
+            </div>
+          </div>
+
+          {/* Bottom Row - 3 Cards (Pure JSX/CSS) */}
+          <div className="bottom-row">
+            {/* Card 1 - Challenge Phase */}
+            <div className="info-card">
+              <div className="card-icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#00C9A7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M6 9H4a2 2 0 0 1-2-2V5h4"/>
+                  <path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/>
+                  <path d="M12 17v4"/>
+                  <path d="M8 21h8"/>
+                  <path d="M6 5h12v7a6 6 0 0 1-12 0V5z"/>
+                </svg>
+              </div>
+              <h3 className="card-title">Challenge Phase</h3>
+              <p className="card-desc">Choose a Challenge account and showcase your skills.</p>
+            </div>
+
+            {/* Card 2 - Get Funded Account */}
+            <div className="info-card">
+              <div className="card-icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#00C9A7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 22h18"/>
+                  <path d="M6 18v-7"/>
+                  <path d="M10 18v-7"/>
+                  <path d="M14 18v-7"/>
+                  <path d="M18 18v-7"/>
+                  <path d="M12 2L2 7h20L12 2z"/>
+                </svg>
+              </div>
+              <h3 className="card-title">Get Funded Account</h3>
+              <p className="card-desc">Pass your challenge and get a simulated funded account.</p>
+            </div>
+
+            {/* Card 3 - Get Rewarded */}
+            <div className="info-card">
+              <div className="card-icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#00C9A7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 6v2"/>
+                  <path d="M12 16v2"/>
+                  <path d="M8.5 9.5A3.5 3.5 0 0 1 12 8c1.93 0 3.5 1.12 3.5 2.5S13.93 13 12 13s-3.5 1.12-3.5 2.5S10.07 18 12 18a3.5 3.5 0 0 0 3.5-1.5"/>
+                </svg>
+              </div>
+              <h3 className="card-title">Get Rewarded</h3>
+              <p className="card-desc">Earn your share of the profits and receive your payout within 24 hrs.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-  );
+  )
 }
+
+export default HowItWorks

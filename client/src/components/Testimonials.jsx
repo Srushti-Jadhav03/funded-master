@@ -1,53 +1,97 @@
-import React from 'react';
+import './Testimonials.css'
 
 const reviews = [
-  { name: 'Karan Gupta', time: '16 hours ago', title: 'Great!', text: "Great, while on the Evaluation stage, I can't comment further because I never had a funded account and am not sure about their restrictions and payout." },
-  { name: 'Karan Gupta', time: '16 hours ago', title: 'Great and fast answers to my questions', text: "Great and fast answers to my questions. Doberman was fantastic and professional answered my questions and the response time was like 2 minutes even though they say 20." },
-  { name: 'Karan Gupta', time: '16 hours ago', title: 'Great Customer Service', text: "Best company no problem so far. Hope to get a payout soon" },
-  { name: 'Karan Gupta', time: '16 hours ago', title: 'Great Customer Service', text: "Great, while on the Evaluation stage, I can't comment further because I never had a funded account and am not sure about their restrictions and payout." },
-  { name: 'Karan Gupta', time: '16 hours ago', title: 'Great Customer Service', text: "Great, while on the Evaluation stage, I can't comment further because I never had a funded account and am not sure about their restrictions and payout." },
-  { name: 'Karan Gupta', time: '16 hours ago', title: 'Great Customer Service', text: "Great, while on the Evaluation stage, I can't comment further because I never had a funded account and am not sure about their restrictions and payout." },
-  { name: 'Karan Gupta', time: '16 hours ago', title: 'Best company no problem so far.', text: "Best company no problem so far. Hope to get a payout soon" },
-  { name: 'Karan Gupta', time: '16 hours ago', title: 'Great Customer Service', text: "Great, while on the Evaluation stage, I can't comment further because I never had a funded account and am not sure about their restrictions and payout." },
-  { name: 'Karan Gupta', time: '16 hours ago', title: 'Support team is best I ever seen and...', text: "Support team is best I ever seen and really helpful and resolve issue quickly" },
-];
+  {
+    title: 'Great!',
+    text: "Great, while on the Evaluation stage, I can't comment further because I never had a funded account and am not sure about their restrictions and payout."
+  },
+  {
+    title: 'Great and fast answers to my questions',
+    text: "Great and fast answers to my questions. Doberman was fantastic and professional, answered my questions and the response time was like 2 minutes even though they say 20."
+  },
+  {
+    title: 'Great Customer Service',
+    text: "Best company no problem so far. Hope to get a payout soon"
+  },
+  {
+    title: 'Great Customer Service',
+    text: "Great, while on the Evaluation stage, I can't comment further because I never had a funded account and am not sure about their restrictions and payout."
+  },
+  {
+    title: 'Great Customer Service',
+    text: "Great, while on the Evaluation stage, I can't comment further because I never had a funded account and am not sure about their restrictions and payout."
+  },
+  {
+    title: 'Great Customer Service',
+    text: "Great, while on the Evaluation stage, I can't comment further because I never had a funded account and am not sure about their restrictions and payout."
+  },
+  {
+    title: 'Best company no problem so far.',
+    text: "Best company no problem so far. Hope to get a payout soon"
+  },
+  {
+    title: 'Support team is best i ever seen and...',
+    text: "Support team is best i ever seen and priyanshu is genuine guide"
+  },
+  {
+    title: 'Great Customer Service',
+    text: "Best company no problem so far. Hope to get a payout soon"
+  },
+]
 
-export default function Testimonials() {
+function Testimonials() {
   return (
-    <section style={{ padding: '80px 60px', background: '#060a07' }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-          <p style={{ fontSize: '0.75rem', fontWeight: 700, color: '#00e676', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '12px' }}>TESTIMONIALS</p>
-          <h2 style={{ fontFamily: 'Syne, sans-serif', fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, color: '#fff', marginBottom: '16px' }}>
-            <span style={{ color: '#00e676' }}>Trust Us</span> - You're In Safe Hands
-          </h2>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '8px' }}>
-            <span style={{ fontWeight: 600, color: '#fff' }}>Excellent</span>
-            <div style={{ display: 'flex', gap: '3px' }}>
-              {[1,2,3,4].map(i => <span key={i} style={{ color: '#00e676', fontSize: '1.2rem' }}>★</span>)}
-              <span style={{ color: '#00e676', fontSize: '1.2rem', opacity: 0.6 }}>★</span>
-            </div>
-          </div>
-          <p style={{ color: '#4a7a50', fontSize: '0.82rem' }}>Rated 4.8 / 5 based on 4,258 reviews on</p>
-        </div>
+    <section id="testimonials" className="testimonials-section">
+      <p className="testimonials-label">TESTIMONIALS</p>
+      <h2 className="testimonials-heading">
+        <span className="teal">Trust Us - </span>
+        You're In Safe Hands
+      </h2>
 
-        <div style={{ columns: '3', columnGap: '16px' }}>
-          {reviews.map((r, i) => (
-            <div key={i} style={{
-              breakInside: 'avoid', marginBottom: '16px',
-              background: '#0a1810', border: '1px solid rgba(0,230,118,0.1)',
-              borderRadius: '12px', padding: '20px',
-            }}>
-              <div style={{ display: 'flex', gap: '3px', marginBottom: '8px' }}>
-                {[1,2,3,4,5].map(s => <span key={s} style={{ color: '#00e676', fontSize: '0.75rem' }}>★</span>)}
+      <div className="trustpilot-row">
+        <span className="excellent-text">Excellent</span>
+        <div className="stars-row">
+          {[1,2,3,4].map(i => (
+            <div key={i} className="star-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+          ))}
+          <div className="star-box star-half">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <p className="rating-text">
+        Rated 4.8 / 5 based on <span className="underline">4,258 reviews</span> on
+      </p>
+
+      <div className="masonry-scroll-wrapper">
+        <div className="masonry-grid">
+          {reviews.map((review, i) => (
+            <div className="review-card" key={i}>
+              <div className="card-stars">
+                {[1,2,3,4,5].map(s => (
+                  <svg key={s} width="16" height="16" viewBox="0 0 24 24" fill="#00C9A7">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                ))}
               </div>
-              <p style={{ fontSize: '0.72rem', color: '#4a7a50', marginBottom: '8px' }}>{r.name} · {r.time}</p>
-              <p style={{ fontSize: '0.88rem', fontWeight: 700, color: '#fff', marginBottom: '8px', fontFamily: 'Syne, sans-serif' }}>{r.title}</p>
-              <p style={{ fontSize: '0.78rem', color: '#5a8a60', lineHeight: 1.6 }}>{r.text}</p>
+              <p className="reviewer-line">
+                <span className="reviewer-name">Karan Gupta</span>
+                <span className="reviewer-time">, 16 hours ago</span>
+              </p>
+              <h4 className="card-title">{review.title}</h4>
+              <p className="card-text">{review.text}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
-  );
+  )
 }
+export default Testimonials
