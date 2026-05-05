@@ -3,7 +3,7 @@ import Hero from './components/Hero'
 import Ticker from './components/Ticker'
 import TradingAssets from './components/TradingAssets'
 import HowItWorks from './components/HowItWorks'
-import PricingSection from './components/PricingSection'
+import Pricing from './components/Pricing'
 import WhyUs from './components/WhyUs'
 import EarningsCalculator from './components/EarningsCalculator'
 import TopTraders from './components/TopTraders'
@@ -15,7 +15,7 @@ import './App.css'
 
 function App() {
   return (
-    <div style={{ overflowX: 'hidden', width: '100%' }}>
+  <div style={{ overflowX: 'hidden', width: '100%' }}>
       <Navbar />
       <Hero />
       <Ticker />
