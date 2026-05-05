@@ -82,8 +82,8 @@ function Testimonials() {
                 ))}
               </div>
               <p className="reviewer-line">
-                <span className="reviewer-name">Karan Gupta</span>
-                <span className="reviewer-time">, 16 hours ago</span>
+                <span className="reviewer-name">christopher Nolan</span>
+                <span className="reviewer-time">, 15 hours ago</span>
               </p>
               <h4 className="card-title">{review.title}</h4>
               <p className="card-text">{review.text}</p>

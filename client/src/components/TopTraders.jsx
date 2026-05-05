@@ -1,11 +1,11 @@
 import './TopTraders.css'
 
 const traders = [
-  { name: 'John Bartlett', country: 'Poland', amount: '$3,423.39', time: '1 Hour', active: false },
-  { name: 'Thomas Vargas', country: 'Austria', amount: '$9,423.39', time: '4 Hours', active: true },
-  { name: 'James Colon', country: 'Norway', amount: '$14,291.76', time: '8 Hours', active: true },
-  { name: 'Joseph Hurst', country: 'Poland', amount: '$1,117.97', time: '6 Hours', active: false },
-  { name: 'Richard Miles', country: 'Iraq', amount: '$6,142.12', time: '20 Hours', active: false },
+  { name: 'Chris Evans', country: 'USA', amount: '$3,423.39', time: '3 Hour', active: false },
+  { name: 'Tom Jacob', country: 'Australia', amount: '$9,423.39', time: '5 Hours', active: true },
+  { name: 'Chris Hemsworth', country: 'Netherlands', amount: '$14,291.76', time: '8 Hours', active: true },
+  { name: 'Robert Downey Jr.', country: 'Poland', amount: '$1,117.97', time: '7 Hours', active: false },
+  { name: 'Benedict Cumberbatch', country: 'Ireland', amount: '$6,142.12', time: '16 Hours', active: false },
 ]
 
 function TopTraders() {
