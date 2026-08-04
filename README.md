@@ -1,148 +1,368 @@
 # 🏛️ Funded Master — MERN Stack Trading Platform
 
-Funded Master Figma design into a full MERN stack web application.
+**Funded Master** is a modern, responsive trading platform built using the **MERN Stack**. The project transforms a professional Figma design into a fully functional web application with interactive pricing plans, an earnings calculator, authentication, trading information, and a responsive user interface.
+
+🌐 **Live Website:** https://funded-master-one.vercel.app
+💻 **GitHub Repository:** https://github.com/Srushti-Jadhav03/funded-master
 
 ---
 
-## 📁 Project Structure
+## 📌 About the Project
 
-```
+Funded Master is a full-stack web application designed to provide a modern trading-platform experience.
+
+The project focuses on converting a detailed **Figma UI design into a functional MERN application**, while maintaining responsive layouts, smooth animations, reusable React components, backend APIs, authentication, and MongoDB integration.
+
+The application includes multiple interactive sections such as trading assets, pricing plans, earnings calculations, payouts, testimonials, FAQs, and contact functionality.
+
+---
+
+## ✨ Key Features
+
+### 🎨 Frontend
+
+* Pixel-perfect **Figma to React** implementation
+* Modern and responsive user interface
+* Mobile-first responsive design
+* Animated hero section
+* Smooth scroll reveal animations
+* Card hover micro-interactions
+* Reusable React components
+* React Router based navigation
+
+### 💰 Trading & Pricing
+
+* Interactive trading pricing plans
+* Multiple challenge types
+
+  * Instant
+  * 1-Step
+  * 2-Step
+  * Spartan
+* Account size selection
+* Dynamic pricing updates
+* Trading asset showcase
+
+### 🧮 Earnings Calculator
+
+* Interactive earnings calculator
+* Slider-based calculations
+* Real-time profit updates
+* Payout estimation
+
+### 🔐 Authentication
+
+* User Registration
+* User Login
+* JWT-based authentication
+* Password hashing using bcrypt
+* MongoDB user storage
+
+### 📊 Additional Features
+
+* Recent trader payouts
+* Testimonials section
+* FAQ accordion
+* Contact form
+* Call-to-action sections
+* Responsive navigation bar
+* Footer with platform information
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology       | Purpose                             |
+| ---------------- | ----------------------------------- |
+| **React.js**     | Frontend Development                |
+| **React Router** | Client-side Routing                 |
+| **Node.js**      | Backend Runtime                     |
+| **Express.js**   | Backend Framework                   |
+| **MongoDB**      | Database                            |
+| **Mongoose**     | MongoDB ODM                         |
+| **JWT**          | Authentication                      |
+| **bcryptjs**     | Password Hashing                    |
+| **CSS**          | Styling & Animations                |
+| **Nodemon**      | Development Server                  |
+| **Concurrently** | Running Frontend & Backend Together |
+| **Vercel**       | Application Deployment              |
+
+---
+
+## 📂 Project Structure
+
+```text
 funded-master/
-├── client/                   # React Frontend
+│
+├── client/                       # React Frontend
+│   │
 │   ├── public/
 │   │   └── index.html
+│   │
 │   └── src/
+│       │
 │       ├── components/
-│       │   ├── Navbar.jsx         # Fixed nav with scroll effect
-│       │   ├── Hero.jsx           # Hero + warrior SVG + ticker
-│       │   ├── TradingAssets.jsx  # 5-card trading assets grid
-│       │   ├── HowItWorks.jsx     # 3-step process + 3D plus
-│       │   ├── Pricing.jsx        # Interactive pricing tabs
-│       │   ├── WhyUs.jsx          # 6 reasons grid
-│       │   ├── Calculator.jsx     # Earnings calculator + payouts
-│       │   ├── Testimonials.jsx   # Masonry review grid
-│       │   ├── FAQ.jsx            # Accordion FAQ
-│       │   └── Footer.jsx         # CTA banner + footer
+│       │   ├── Navbar.jsx
+│       │   ├── Hero.jsx
+│       │   ├── TradingAssets.jsx
+│       │   ├── HowItWorks.jsx
+│       │   ├── Pricing.jsx
+│       │   ├── WhyUs.jsx
+│       │   ├── Calculator.jsx
+│       │   ├── Testimonials.jsx
+│       │   ├── FAQ.jsx
+│       │   └── Footer.jsx
+│       │
 │       ├── pages/
-│       │   └── HomePage.jsx       # Assembles all sections
+│       │   └── HomePage.jsx
+│       │
 │       ├── App.jsx
 │       ├── index.js
 │       └── index.css
 │
-└── server/                   # Express Backend
-    ├── models/
-    │   └── User.js            # MongoDB user model
-    ├── routes/
-    │   ├── auth.js            # Register / Login (JWT)
-    │   ├── plans.js           # Trading plans API
-    │   ├── payouts.js         # Recent payouts API
-    │   └── contact.js         # Contact form API
-    ├── index.js               # Express app entry
-    ├── .env.example
-    └── package.json
+├── server/                       # Node.js + Express Backend
+│   │
+│   ├── models/
+│   │   └── User.js
+│   │
+│   ├── routes/
+│   │   ├── auth.js
+│   │   ├── plans.js
+│   │   ├── payouts.js
+│   │   └── contact.js
+│   │
+│   ├── index.js
+│   ├── .env.example
+│   └── package.json
+│
+├── package.json
+├── package-lock.json
+└── README.md
 ```
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js v18+
-- MongoDB (local or MongoDB Atlas)
 
-### 1. Clone & Install
+Make sure you have the following installed:
+
+* Node.js v18+
+* npm
+* MongoDB locally or MongoDB Atlas
+* Git
+
+---
+
+### 1. Clone the Repository
+
 ```bash
-git clone <repo>
+git clone https://github.com/Srushti-Jadhav03/funded-master.git
+```
+
+Navigate to the project:
+
+```bash
 cd funded-master
+```
+
+---
+
+### 2. Install Dependencies
+
+Install both frontend and backend dependencies:
+
+```bash
 npm run install-all
 ```
 
-### 2. Configure Environment
+---
+
+### 3. Configure Environment Variables
+
+Navigate to the server directory:
+
 ```bash
 cd server
-cp .env.example .env
 ```
 
-### 3. Run Development
-```bash
-# From root directory — runs both frontend + backend
-npm run dev
+Create a `.env` file based on:
 
-# Or separately:
-npm run client    # React on http://localhost:3000
-npm run server    # Express on http://localhost:5000
+```text
+.env.example
+```
+
+Add the required environment variables such as:
+
+```env
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+PORT=5000
+```
+
+> ⚠️ Never commit your actual `.env` file or database credentials to GitHub.
+
+---
+
+### 4. Run the Application
+
+From the root directory:
+
+```bash
+npm run dev
+```
+
+This runs both the React frontend and Express backend.
+
+Or run them separately:
+
+```bash
+npm run client
+```
+
+Frontend:
+
+```text
+http://localhost:3000
+```
+
+Backend:
+
+```bash
+npm run server
+```
+
+Backend API:
+
+```text
+http://localhost:5000
 ```
 
 ---
 
 ## 🔌 API Endpoints
 
-| Method | Route | Description |
-|--------|-------|-------------|
-| POST | `/api/auth/register` | Register new user |
-| POST | `/api/auth/login` | Login, returns JWT |
-| GET | `/api/plans` | All trading plans |
-| GET | `/api/plans/:type` | Plans by type (instant/1-step/2-step) |
-| GET | `/api/payouts` | Recent trader payouts |
-| POST | `/api/contact` | Submit contact form |
+| Method | Endpoint             | Description                       |
+| ------ | -------------------- | --------------------------------- |
+| `POST` | `/api/auth/register` | Register a new user               |
+| `POST` | `/api/auth/login`    | Login user and return JWT         |
+| `GET`  | `/api/plans`         | Get all trading plans             |
+| `GET`  | `/api/plans/:type`   | Get plans based on challenge type |
+| `GET`  | `/api/payouts`       | Get recent trader payouts         |
+| `POST` | `/api/contact`       | Submit contact form               |
 
 ---
 
-## 🎨 Design System
+## 🔄 Application Flow
 
-| Token | Value |
-|-------|-------|
-| Primary Green | `#00e676` |
-| Background | `#060a07` |
-| Card BG | `#0a1810` |
-| Dark Section | `#07100a` |
-| Text Primary | `#ffffff` |
-| Text Muted | `#4a7a50` |
-| Font Display | Syne (700, 800) |
-| Font Body | DM Sans (400, 500, 600) |
-
----
-
-## 🧩 Key Features
-
-- ✅ **Pixel-perfect** Figma to React conversion
-- ✅ **Interactive Pricing** — tab switcher (Instant/1-Step/2-Step/Sparatn) + account size selector
-- ✅ **Live Earnings Calculator** — sliders update profit in real-time
-- ✅ **Animated Hero** — warrior SVG + scrolling live payouts ticker
-- ✅ **Scroll reveal** animations on all sections
-- ✅ **Hover micro-interactions** on every card
-- ✅ **JWT Authentication** ready (register/login)
-- ✅ **MongoDB** integration via Mongoose
-- ✅ **Responsive** mobile-first design
-- ✅ **React Router** for navigation
-
----
-
-## 🏗️ Production Build
-
-```bash
-cd client && npm run build
-# Serves static files from /client/build
-```
-
-Add to `server/index.js` for production:
-```js
-const path = require('path');
-app.use(express.static(path.join(__dirname, '../client/build')));
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, '../client/build/index.html')));
+```text
+User Visits Platform
+        ↓
+Explore Trading Assets
+        ↓
+View Trading Challenges
+        ↓
+Select Challenge Type
+        ↓
+Select Account Size
+        ↓
+View Pricing
+        ↓
+Calculate Potential Earnings
+        ↓
+Register / Login
+        ↓
+Explore Trading Platform
 ```
 
 ---
 
-## 📦 Tech Stack
+## 🎨 UI Highlights
 
-| Layer | Technology |
-|-------|-----------|
-| Frontend | React 18, React Router v6 |
-| Styling | Inline CSS + CSS animations |
-| Backend | Node.js, Express 4 |
-| Database | MongoDB + Mongoose |
-| Auth | JWT + bcryptjs |
-| Dev Tools | Concurrently, Nodemon |
+The application includes several modern UI elements:
+
+* Dark trading-themed interface
+* Animated hero section
+* Interactive pricing cards
+* Earnings calculator
+* Trading asset cards
+* Responsive navigation
+* Testimonials
+* FAQ accordion
+* Smooth scrolling animations
+* Interactive hover effects
 
 ---
+
+## 🌐 Live Demo
+
+The application is deployed on **Vercel** and can be accessed here:
+
+### 🚀 https://funded-master-one.vercel.app
+
+Try the live application to explore the responsive UI, pricing sections, earnings calculator, and other platform features.
+
+---
+
+## 🎯 Project Objectives
+
+The primary objectives of this project were to:
+
+* Convert a professional Figma design into a working web application
+* Build reusable React components
+* Develop REST APIs using Node.js and Express
+* Integrate MongoDB using Mongoose
+* Implement JWT-based authentication
+* Create interactive UI components
+* Build a responsive user experience
+* Gain experience developing and deploying a full-stack MERN application
+
+---
+
+## 🚀 Future Enhancements
+
+Potential improvements include:
+
+* Complete user dashboard
+* User profile management
+* Trading challenge purchase flow
+* Payment gateway integration
+* Admin dashboard
+* Trading account management
+* Advanced authentication and authorization
+* Email verification
+* Password reset functionality
+* User transaction history
+* Real-time trading statistics
+* Analytics dashboard
+
+---
+
+## 👩‍💻 Author
+
+**Srushti Jadhav**
+
+GitHub: https://github.com/Srushti-Jadhav03
+
+---
+
+## 🔗 Project Links
+
+**Live Application**
+https://funded-master-one.vercel.app
+
+**Source Code**
+https://github.com/Srushti-Jadhav03/funded-master
+
+---
+
+## ⭐ Support
+
+If you find this project useful or interesting, consider giving the repository a ⭐ on GitHub.
+
+---
+
+### Funded Master
+
+**A modern MERN-stack trading platform built from Figma to a responsive full-stack web experience.**
